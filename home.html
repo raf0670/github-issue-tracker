@@ -56,11 +56,11 @@
     <main class="w-9/12 mx-auto pt-16">
 
         <header class="mb-6 p-6 flex flex-wrap gap-4 shadow-md rounded-md">
-            <button id="home-all" class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">All</button>
+            <button onclick="setButton(`home-all`)" id="home-all" class="btn btn-primary font-semibold w-24">All</button>
 
-            <button id="home-open" class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Open</button>
+            <button onclick="setButton(`home-open`)" id="home-open" class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Open</button>
 
-            <button id="home-closed"
+            <button onclick="setButton(`home-closed`)" id="home-closed"
                 class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Closed</button>
         </header>
 
@@ -91,33 +91,6 @@
 
         <section id="card-container"
             class="p-6 w-full rounded-b-md shadow-md bg-[#FBFBFB] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center">
-
-
-            <div id="card-1" class="max-w-3xs max-h-80 bg-white shadow-md rounded-lg p-4 space-y-3.5">
-                <div class="flex justify-between items-center">
-                    <img src="./assets/Open-Status.png" class="" alt="">
-                    <img src="./assets/Closed- Status .png" class="" alt="">
-                    <h2 id="priority" class="bg-red-100 rounded-full w-20 text-center text-xs font-semibold p-1 text-red-600">HIGH</h2>
-                </div>
-
-                <h1 id="title" class="text-lg font-semibold leading-5">Fix navigation menu on mobile devices</h1>
-                <p id="description" class="text-[#64748B] text-xs leading-4">The navigation menu doesn't collapse properly on mobile devices...</p>
-
-                <div id="label-container" class="flex flex-wrap gap-3 text-sm font-semibold">
-                    <h2 class="bg-red-100 px-1 py-1 rounded-full text-red-600"><span><i class="fa-solid fa-bug"></i></span> BUG</h2>
-                    <h2 class="bg-yellow-100 px-1 py-1 rounded-full text-yellow-600"><span><i class="fa-regular fa-life-ring"></i></span> HELP WANTED</h2>
-                    <h2 class="bg-[#EEEFF2] px-1 py-1 rounded-full text-gray-500"><span><i class="fa-regular fa-life-ring"></i></span> HELP WANTED</h2>
-                </div>
-
-                <span class="w-full text-[#cecece]">
-                    <hr>
-                </span>
-
-                <div class="text-[#64748B] text-sm py-2">
-                    <p>#Author</p>
-                    <p>Date</p>
-                </div>
-            </div>
 
         </section>
     </main>
