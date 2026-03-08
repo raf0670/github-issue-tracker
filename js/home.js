@@ -14,18 +14,22 @@
 //       "
 // }
 
-const setButton = (btnId) => {
+const resetButtons = () => {
     const all = document.getElementById("home-all");
     const open = document.getElementById("home-open");
     const closed = document.getElementById("home-closed");
-
+    
     all.classList.remove("btn-primary");
     open.classList.remove("btn-primary");
     closed.classList.remove("btn-primary");
-
+    
     all.classList.add("bg-white", "text-gray-600", "outline-gray-600");
     open.classList.add("bg-white", "text-gray-600", "outline-gray-600");
     closed.classList.add("bg-white", "text-gray-600", "outline-gray-600");
+};
+
+const setButton = (btnId) => {
+    resetButtons();
 
     document.getElementById(btnId).classList.remove("bg-white", "text-gray-600", "outline-gray-600");
     document.getElementById(btnId).classList.add("btn-primary");
@@ -70,7 +74,7 @@ const displayIssues = (issues) => {
     issues.forEach(issue => {
         const card = document.createElement("div");
         card.innerHTML = `
-            <div id="card-${issue.id}" class=" h-80 flex flex-col justify-center bg-white shadow-md rounded-lg p-4 space-y-3.5">
+            <div id="card-${issue.id}" class="${issue.status === "open" ? `border-t-3 border-t-green-600` : `border-t-3 border-t-purple-600`} h-80 flex flex-col justify-center bg-white shadow-md rounded-lg p-4 space-y-3.5">
                 <div class="flex justify-between items-center">
                     ${issue.status === "open" ? `<img src="./assets/Open-Status.png" class="" alt="">` : `<img src="./assets/Closed- Status .png" class="" alt="">`}
                     ${issue.priority === "high" ? `<h2 class="bg-red-100 rounded-full w-20 text-center text-xs font-semibold p-1 text-red-600">HIGH</h2>` : issue.priority === "medium" ? `<h2 class="bg-yellow-100 rounded-full w-20 text-center text-xs font-semibold p-1 text-yellow-600">MEDIUM</h2>` : `<h2 class="bg-[#EEEFF2] rounded-full w-20 text-center text-xs font-semibold p-1 text-gray-600">LOW</h2>`}
@@ -100,5 +104,15 @@ const displayIssues = (issues) => {
         container.append(card);
     });
 };
+
+// search function event
+document.getElementById("btn-search").addEventListener("click", () => {
+    resetButtons();
+    const input = document.getElementById("input-search");
+    const inputValue = input.value.trim().toLowerCase();
+    // console.log(inputValue);
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputValue}`;
+    fetch(url).then(res => res.json()).then(data => displayIssues(data.data));
+});
 
 loadAllIssues();
