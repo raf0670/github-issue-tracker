@@ -29,12 +29,12 @@
 
 <body>
     <nav>
-        <div class="navbar bg-base-100 shadow-sm">
+        <div class="navbar bg-base-100 shadow-sm space-x-3">
             <div class="navbar-start flex gap-3">
                 <img src="./assets/github-logo.png" alt="" class="max-w-9 max-h-9">
                 <h1 class="font-bold text-xl">GitHub Issues Tracker</h1>
             </div>
-            <div class="navbar-end space-x-3">
+            <div class="navbar-end space-x-3 flex flex-col sm:flex-row gap-2">
                 <label class="input max-w-72">
                     <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
@@ -45,13 +45,55 @@
                     </svg>
                     <input type="search" required placeholder="Search Issues..." />
                 </label>
-                
+
                 <button class="btn btn-primary text-lg">
                     + New Issue
                 </button>
             </div>
         </div>
     </nav>
+
+    <main class="w-9/12 mx-auto pt-16">
+
+        <header class="mb-6 p-6 flex flex-wrap gap-4 shadow-md rounded-md">
+            <button id="home-all" class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">All</button>
+
+            <button id="home-open" class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Open</button>
+
+            <button id="home-closed"
+                class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Closed</button>
+        </header>
+
+        <section class="border-b border-b-gray-200 p-6 shadow-md rounded-t-md">
+            <div class="flex justify-between flex-wrap items-center">
+                <div class="left flex gap-6">
+                    <div class="p-2 bg-purple-200 rounded-full"><img src="./assets/Aperture.png" alt=""></div>
+                    <div class="font-bold text-xl">
+                        <p><span id="total-issues">0</span> Issues</p>
+                        <p class="text-[#64748B] font-normal text-sm">Track and manage your project issues</p>
+                    </div>
+                </div>
+
+                <div class="right flex flex-col sm:flex-row gap-3 font-semibold">
+                    <div class="flex gap-2 items-center">
+                        <div class="badge bg-green-400 badge-xs"></div>
+                        <p class="text-sm">Open</p>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <div class="badge bg-[#A855F7] badge-xs"></div>
+                        <p class="text-sm">Closed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="card-container"
+            class="p-6 w-full rounded-b-md shadow-md bg-[#FBFBFB] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center">
+            
+
+            
+        </section>
+    </main>
 </body>
 
 </html>
