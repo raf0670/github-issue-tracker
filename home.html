@@ -28,7 +28,30 @@
 </head>
 
 <body>
-    
+    <nav>
+        <div class="navbar bg-base-100 shadow-sm">
+            <div class="navbar-start flex gap-3">
+                <img src="./assets/github-logo.png" alt="" class="max-w-9 max-h-9">
+                <h1 class="font-bold text-xl">GitHub Issues Tracker</h1>
+            </div>
+            <div class="navbar-end space-x-3">
+                <label class="input max-w-72">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" required placeholder="Search Issues..." />
+                </label>
+                
+                <button class="btn btn-primary text-lg">
+                    + New Issue
+                </button>
+            </div>
+        </div>
+    </nav>
 </body>
 
 </html>
