@@ -76,7 +76,7 @@ const displayIssueDetails = async (id) => {
             <h1 class="text-3xl font-bold">${data.title}</h1>
 
             <div class="flex gap-2 items-center">
-                ${data.status === "open" ? `<p class="bg-green-400 text-white text-[12px] font-semibold px-1 rounded-full">OPEN</p>` : `<p class="bg-red-400 text-white text-[12px] font-semibold px-1 rounded-full">CLOSED</p>`}</p>
+                ${data.status === "open" ? `<p class="bg-green-400 text-white text-[12px] font-semibold px-1 rounded-full w-16 text-center">OPEN</p>` : `<p class="bg-red-400 text-white text-[12px] font-semibold px-1 rounded-full w-16 text-center">CLOSED</p>`}</p>
                 <div class="bg-gray-400 h-1 w-1 rounded-full"></div>
                 <p class="text-gray-400">Opened by ${data.author}</p>
                 <div class="bg-gray-400 h-1 w-1 rounded-full"></div>
