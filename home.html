@@ -56,9 +56,11 @@
     <main class="w-9/12 mx-auto py-16">
 
         <header class="mb-6 p-6 flex flex-wrap gap-4 shadow-md rounded-md ">
-            <button onclick="setButton(`home-all`)" id="home-all" class="btn btn-primary font-semibold w-24">All</button>
+            <button onclick="setButton(`home-all`)" id="home-all"
+                class="btn btn-primary font-semibold w-24">All</button>
 
-            <button onclick="setButton(`home-open`)" id="home-open" class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Open</button>
+            <button onclick="setButton(`home-open`)" id="home-open"
+                class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Open</button>
 
             <button onclick="setButton(`home-closed`)" id="home-closed"
                 class="btn bg-white text-gray-600 font-semibold outline-gray-600 w-24">Closed</button>
@@ -96,6 +98,32 @@
 
         </section>
     </main>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_2.showModal()">open modal</button> -->
+    <dialog id="issue_modal" class="modal">
+        <div class="modal-box">
+            <div id="modal-container">
+
+            </div>
+            <form method="dialog" class="modal-backdrop flex flex-row-reverse px-5">
+                <button class="btn btn-primary w-24">Close</button>
+            </form> 
+        </div>
+    </dialog>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <!-- <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
+        <div id="modal-container" class="modal-box">
+            
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog> -->
 
     <script src="./js/home.js"></script>
 </body>
