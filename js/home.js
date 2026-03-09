@@ -14,6 +14,18 @@
 //       "
 // }
 
+const manageSpinner = (condition) => {
+    const cardContainer = document.getElementById("card-container");
+    const spinner = document.getElementById("spinner");
+    if (condition === true) {
+        spinner.classList.remove("hidden");
+        cardContainer.classList.add("hidden");
+    } else {
+        spinner.classList.add("hidden");
+        cardContainer.classList.remove("hidden");
+    }
+};
+
 const resetButtons = () => {
     const all = document.getElementById("home-all");
     const open = document.getElementById("home-open");
@@ -44,6 +56,9 @@ const setButton = (btnId) => {
 };
 
 const filterStatus = async (status) => {
+    // spinner show
+    manageSpinner(true);
+    
     if (status === "all") {
         loadAllIssues();
         return;
@@ -59,6 +74,7 @@ const filterStatus = async (status) => {
 };
 
 const loadAllIssues = () => {
+    manageSpinner(true);
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues").then(res => res.json()).then(json => displayIssues(json.data));
 };
 
@@ -76,9 +92,9 @@ const displayIssueDetails = async (id) => {
             <h1 class="text-3xl font-bold">${data.title}</h1>
 
             <div class="flex gap-2 items-center">
-                ${data.status === "open" ? `<p class="bg-green-400 text-white text-[12px] font-semibold px-1 rounded-full w-16 text-center">OPEN</p>` : `<p class="bg-red-400 text-white text-[12px] font-semibold px-1 rounded-full w-16 text-center">CLOSED</p>`}</p>
+                ${data.status === "open" ? `<p class="bg-green-500 text-white text-[12px] font-semibold px-1 rounded-full w-16 text-center">OPEN</p>` : `<p class="bg-purple-500 text-white text-[12px] font-semibold px-1 rounded-full w-16 text-center">CLOSED</p>`}</p>
                 <div class="bg-gray-400 h-1 w-1 rounded-full"></div>
-                <p class="text-gray-400">Opened by ${data.author}</p>
+                <p class="text-gray-400">Opened by ${data.assignee}</p>
                 <div class="bg-gray-400 h-1 w-1 rounded-full"></div>
                 <p class="text-gray-400">
                     ${data.createdAt[5]}${data.createdAt[6]}/${data.createdAt[8]}${data.createdAt[9]}/${data.createdAt[0]}${data.createdAt[1]}${data.createdAt[2]}${data.createdAt[3]}
@@ -116,6 +132,9 @@ const displayIssueDetails = async (id) => {
 };
 
 const displayIssues = (issues) => {
+    // spinner show
+    manageSpinner(true);
+    
     // get container
     const container = document.getElementById("card-container");
     container.innerHTML = "";
@@ -129,6 +148,7 @@ const displayIssues = (issues) => {
                         <h1 class="text-center text-4xl text-gray-600">No Issues Found</h1>
                     </div>
         `
+        manageSpinner(false);
         return;
     }
 
@@ -136,7 +156,7 @@ const displayIssues = (issues) => {
     issues.forEach(issue => {
         const card = document.createElement("div");
         card.innerHTML = `
-            <div onclick="displayIssueDetails(${issue.id})" id="card-${issue.id}" class="${issue.status === "open" ? `border-t-3 border-t-green-600` : `border-t-3 border-t-purple-600`} h-full flex flex-col justify-center bg-white shadow-md rounded-lg p-4 space-y-4">
+            <div onclick="displayIssueDetails(${issue.id})" class="${issue.status === "open" ? `border-t-3 border-t-green-600` : `border-t-3 border-t-purple-600`} h-full flex flex-col justify-center bg-white shadow-md rounded-lg p-4 space-y-4">
                 <div class="flex justify-between items-center">
                     ${issue.status === "open" ? `<img src="./assets/Open-Status.png" class="" alt="">` : `<img src="./assets/Closed- Status .png" class="" alt="">`}
                     ${issue.priority === "high" ? `<h2 class="bg-red-100 rounded-full w-20 text-center text-xs font-semibold p-1 text-red-600">HIGH</h2>` : issue.priority === "medium" ? `<h2 class="bg-yellow-100 rounded-full w-20 text-center text-xs font-semibold p-1 text-yellow-600">MEDIUM</h2>` : `<h2 class="bg-[#EEEFF2] rounded-full w-20 text-center text-xs font-semibold p-1 text-gray-600">LOW</h2>`}
@@ -164,11 +184,17 @@ const displayIssues = (issues) => {
 
         // append
         container.append(card);
+
+        // spnnier hide
+        manageSpinner(false);
     });
 };
 
 // search function event
 document.getElementById("btn-search").addEventListener("click", () => {
+    // spinner show
+    manageSpinner(true);
+
     resetButtons();
     const input = document.getElementById("input-search");
     const inputValue = input.value.trim().toLowerCase();
